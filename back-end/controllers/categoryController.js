@@ -25,7 +25,7 @@ module.exports = {
 	deleteCategory: function (req, res) {
 		categoryModel.findByIdAndRemove({ _id: req.params.id }, (err, Category) => {
 			if (err) {
-				res.status(500),
+				res.
 					json({
 						msg: 'erreur',
 						status: 500,
@@ -65,12 +65,11 @@ module.exports = {
 			.findByIdAndUpdate({ _id: req.params.id }, req.body)
 			.exec(function (err, Categorys) {
 				if (err) {
-					res.status(500),
-						json({
-							msg: 'erreur',
-							status: 500,
-							data: null,
-						});
+					res.status(500).json({
+						msg: 'erreur',
+						status: 500,
+						data: null,
+					});
 				} else {
 					res.status(200).json({
 						msg: 'Category updated!',

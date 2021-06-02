@@ -24,6 +24,8 @@ export default class AddSubCategory extends Component {
 			description: '',
 			cat: '',
 			Categories: [],
+			catErr: '',
+			error: '',
 		};
 		this.SubCategoryController = new SubCategoryController();
 		this.CategoryController = new CategoryController();
@@ -48,11 +50,23 @@ export default class AddSubCategory extends Component {
 			title: this.state.title,
 			description: this.state.description,
 		};
-		this.SubCategoryController.AddSubCategory(data).then(res => {
-			console.log('response', res);
-			this.pushSubCat(this.state.cat, res.data.data._id);
-			window.location.href = '/category';
-		});
+		if (this.state.cat !== '' && this.state.title !== '') {
+			this.SubCategoryController.AddSubCategory(data).then(res => {
+				console.log('response', res);
+				if (res.data.statuts == 500) {
+					this.setState({
+						error: 'Cette sous-catégorie déja existe',
+					});
+				} else {
+					this.pushSubCat(this.state.cat, res.data.data._id);
+					window.location.href = '/category';
+				}
+			});
+		} else if (this.state.title === '') {
+			this.setState({ error: 'Veuillez remplir ce champ' });
+		} else {
+			this.setState({ catErr: 'Veuillez séléctionner une catégorie' });
+		}
 	}
 
 	componentDidMount() {
@@ -61,11 +75,11 @@ export default class AddSubCategory extends Component {
 
 	render() {
 		return (
-			<Page >
+			<Page>
 				<Row>
 					<Col xl={8} lg={12} md={12}>
 						<Card>
-						<CardHeader>Ajouter une sous-catégorie</CardHeader>
+							<CardHeader>Ajouter une sous-catégorie</CardHeader>
 							<CardBody>
 								<Form>
 									<FormGroup row>
@@ -93,6 +107,15 @@ export default class AddSubCategory extends Component {
 													),
 												)}
 											</select>
+											<Label
+												style={{
+													// paddingBottom: '20px',
+													fontSize: 12,
+													color: 'red',
+												}}
+											>
+												{this.state.catErr}
+											</Label>
 										</Col>
 									</FormGroup>
 									<FormGroup row>
@@ -106,11 +129,20 @@ export default class AddSubCategory extends Component {
 												placeholder="Titre"
 												onChange={event =>
 													this.setState({
-														title:
-															event.target.value,
+														title: event.target
+															.value,
 													})
 												}
 											/>
+											<Label
+												style={{
+													// paddingBottom: '20px',
+													fontSize: 12,
+													color: 'red',
+												}}
+											>
+												{this.state.error}
+											</Label>
 										</Col>
 									</FormGroup>
 									<FormGroup row>

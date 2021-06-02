@@ -51,9 +51,10 @@ export default class ListCategories extends Component {
 		this.props.history.push(path);
 	}
 
-	updateSubCategory(id) {
+	updateSubCategory(id,id2) {
 		console.log('id: ', id);
 		localStorage.setItem('idSubCategory', id);
+		localStorage.setItem('id2SubCategory', id2);
 		window.location.href = '/subCategory/updateSubCategory';
 	}
 
@@ -219,6 +220,7 @@ export default class ListCategories extends Component {
 																									onClick={() =>
 																										this.updateSubCategory(
 																											subcat.title,
+																											subcat._id,
 																										)
 																									}
 																									style={{

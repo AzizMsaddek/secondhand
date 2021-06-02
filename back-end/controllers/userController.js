@@ -100,7 +100,7 @@ module.exports = {
 			)
 			.exec(function (err, users) {
 				if (err) {
-					res.json({
+					res.status(500).json({
 						msg: 'erreur' + err,
 						status: 500,
 						data: null,
@@ -172,8 +172,8 @@ module.exports = {
 			.populate('annonce')
 			.populate({
 				path: 'order',
-				populate: { path: 'annonces' }
-			 })
+				populate: { path: 'annonces' },
+			})
 			.exec(function (err, users) {
 				if (err) {
 					res.status(500).json({
@@ -197,8 +197,8 @@ module.exports = {
 			.populate('annonce')
 			.populate({
 				path: 'order',
-				populate: { path: 'annonces' }
-			 })
+				populate: { path: 'annonces' },
+			})
 			.exec(function (err, users) {
 				if (err) {
 					res.status(500),
@@ -495,5 +495,4 @@ module.exports = {
 			}
 		);
 	},
-	
 };

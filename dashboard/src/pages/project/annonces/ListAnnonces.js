@@ -54,6 +54,8 @@ export default class ListAnnonces extends Component {
 													<thead>
 														<tr>
 															<th>Annonce</th>
+															<th>Description</th>
+															<th>Image</th>
 															<th>Publié par</th>
 															<th>Date</th>
 															{/* <th>Produit</th> */}
@@ -69,6 +71,11 @@ export default class ListAnnonces extends Component {
 																		<td>
 																			{
 																				ann.title
+																			}
+																		</td>
+																		<td>
+																			{
+																				ann.description
 																			}
 																		</td>
 																		<td>

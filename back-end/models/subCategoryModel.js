@@ -1,10 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+//importation de uniqueValidator
+const uniqueValidator = require('mongoose-unique-validator');
+
 const subCategorySchema = Schema({
     title:{
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description:{
         type: String,
@@ -20,5 +24,7 @@ const subCategorySchema = Schema({
 		},
 	],
 })
+
+subCategorySchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('subCategoryModel',subCategorySchema)
