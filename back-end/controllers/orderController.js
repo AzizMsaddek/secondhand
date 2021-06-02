@@ -12,11 +12,11 @@ var transporter = nodemailer.createTransport({
 	},
 });
 
-var testBlock = ''
+var testBlock = '';
 
 module.exports = {
 	createOrder: function (req, res) {
-        orderModel.create(req.body , function (err, Order) {
+		orderModel.create(req.body, function (err, Order) {
 			console.log('cest bon');
 			if (err) {
 				console.log(err);
@@ -31,7 +31,7 @@ module.exports = {
 					statuts: 200,
 					data: Order,
 				});
-                
+
 				transporter.sendMail(
 					{
 						from: 'help.secondhand@gmail.com',
@@ -171,19 +171,17 @@ module.exports = {
                                                 <td align="center" height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
                                                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;">
                                                         <tr>
-                                                            <td align="center" valign="top" style="font-size:0;">
-                                                                <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                                                        <tr>
-                                                                            <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+ 
+                                                                            <td width="50%" align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                                                                 <p style="font-weight: 800;">Adresse de livraison</p>
                                                                                 <p>${Order.adresse}</p>
                                                                             </td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </div>
-                                                                
-                                                            </td>
+                                                                       
+                                                                            <td width="50%" align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+                                                                                <p style="font-weight: 800;">Date prévue de livraison</p>
+                                                                                <p>${Order.shipDate}</p>
+                                                                            </td>
+                                                                                                                                  
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -207,7 +205,7 @@ module.exports = {
                             </table>
                         </body>
                         
-                        </html>`
+                        </html>`,
 					},
 					function (error, info) {
 						if (error) {
