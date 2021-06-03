@@ -54,6 +54,8 @@ export default class ListAnnonces extends Component {
 													<thead>
 														<tr>
 															<th>Annonce</th>
+															<th>Description</th>
+															<th>Images</th>
 															<th>Publié par</th>
 															<th>Date</th>
 															{/* <th>Produit</th> */}
@@ -70,6 +72,25 @@ export default class ListAnnonces extends Component {
 																			{
 																				ann.title
 																			}
+																		</td>
+																		<td>
+																			{
+																				ann.description
+																			}
+																		</td>
+																		<td>
+																			{ann.image.map(image => {
+																				return (	
+																				<img
+																				style={{ width: "64px", height: "100px",margin: '5px'}}
+																				variant="bottom"
+																				src={`http://localhost:4000/annonce/annonceImage/${
+																					image.name
+																				}`}
+				  																/>
+																				)
+																			})}
+																		
 																		</td>
 																		<td>
 																			{
