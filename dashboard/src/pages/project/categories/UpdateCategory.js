@@ -32,7 +32,6 @@ export default class UpdateCategory extends Component {
 			title: this.state.title,
 			description: this.state.description,
 		};
-		console.log('iiiiiiiiii', localStorage.getItem('idCategory'));
 		this.CategoryController.updateCategory(
 			localStorage.getItem('idCategory'),
 			data,
@@ -75,8 +74,8 @@ export default class UpdateCategory extends Component {
 												placeholder="Titre"
 												onChange={event =>
 													this.setState({
-														title:
-															event.target.value,
+														title: event.target
+															.value,
 													})
 												}
 											/>

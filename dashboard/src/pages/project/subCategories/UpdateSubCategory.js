@@ -32,9 +32,8 @@ export default class UpdateSubCategory extends Component {
 			title: this.state.title,
 			description: this.state.description,
 		};
-		console.log('iiiiiiiiii', localStorage.getItem('idSubCategory'));
 		this.SubCategoryController.updateSubCategory(
-			localStorage.getItem('idSubCategory'),
+			localStorage.getItem('id2SubCategory'),
 			data,
 		).then(res => {
 			console.log('response', res);
@@ -75,8 +74,8 @@ export default class UpdateSubCategory extends Component {
 												placeholder="Titre"
 												onChange={event =>
 													this.setState({
-														title:
-															event.target.value,
+														title: event.target
+															.value,
 													})
 												}
 											/>

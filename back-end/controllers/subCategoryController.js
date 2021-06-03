@@ -66,12 +66,11 @@ module.exports = {
 			.findByIdAndUpdate({ _id: req.params.id }, req.body)
 			.exec(function (err, SubCategorys) {
 				if (err) {
-					res.status(500),
-						json({
-							msg: 'erreur',
-							status: 500,
-							data: null,
-						});
+					res.status(500).json({
+						msg: 'erreur',
+						status: 500,
+						data: null,
+					});
 				} else {
 					res.status(200).json({
 						msg: 'SubCategory updated!',
@@ -87,8 +86,8 @@ module.exports = {
 			.findOne({ title: req.params.title })
 			.populate({
 				path: 'annonce',
-				populate: { path: 'user_id' }
-			 })
+				populate: { path: 'user_id' },
+			})
 			.exec(function (err, SubCategorys) {
 				if (err) {
 					res.status(500),
@@ -112,8 +111,8 @@ module.exports = {
 			.find({})
 			.populate({
 				path: 'annonce',
-				populate: { path: 'user_id' }
-			 })
+				populate: { path: 'user_id' },
+			})
 			.exec(function (err, SubCategorys) {
 				if (err) {
 					res.status(500),

@@ -20,6 +20,7 @@ export default class AddCategory extends Component {
 		super();
 		this.state = {
 			title: '',
+			error: '',
 			// description: '',
 		};
 		this.CategoryController = new CategoryController();
@@ -31,10 +32,22 @@ export default class AddCategory extends Component {
 			title: this.state.title,
 			// description: this.state.description
 		};
+		if (this.state.title !== ''){
 		this.CategoryController.AddCategory(data).then(res => {
 			console.log('response', res);
+			if (res.data.statuts == 500) {
+				this.setState({
+					error: 'Cette catégorie déja existe',
+				});
+			} else {
+				window.location.href = '/category';
+			}
 		});
-		window.location.href = '/category';
+	}
+	else {
+		this.setState({error: 'Veuillez remplir ce champ'});
+	}
+	
 	}
 
 	render() {
@@ -57,13 +70,23 @@ export default class AddCategory extends Component {
 												placeholder="Titre"
 												onChange={event =>
 													this.setState({
-														title:
-															event.target.value,
+														title: event.target
+															.value,
 													})
 												}
 											/>
+											<Label
+												style={{
+													// paddingBottom: '20px',
+													fontSize: 12,
+													color: 'red',
+												}}
+											>
+												{this.state.error}
+											</Label>
 										</Col>
 									</FormGroup>
+
 									<FormGroup row>
 										<Label for="exampleEmail" sm={2}>
 											Description

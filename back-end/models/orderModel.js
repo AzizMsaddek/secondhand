@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const orderSchema = Schema({
     date: { type: String, default: new Date().toLocaleDateString() },
+    shipDate: { type: String},
     price:{
         type: Number,
         required: true
