@@ -96,6 +96,8 @@ export default class ListAnnonces extends Component {
 																			{
 																				ann
 																					.user_id
+																					.surName + " " + ann
+																					.user_id
 																					.name
 																			}
 																		</td>

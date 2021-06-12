@@ -124,29 +124,7 @@ class Register extends Component {
                 <div className="theme-card">
                   <form className="theme-form">
                     <div className="form-row">
-                      <div className="col-md-4">
-                        <label>Nom</label>
-                        <input
-                          onKeyPress={this.handleKeyPress}
-                          name="name"
-                          type="text"
-                          className="form-control"
-                          id="fname"
-                          placeholder="Votre nom"
-                          onChange={(e) => {
-                            this.setState({ name: e.target.value });
-                          }}
-                        />
-                        <label
-                          style={{
-                            paddingBottom: "20px",
-                            fontSize: 12,
-                            color: "red",
-                          }}
-                        >
-                          {this.state.error.NameErr}
-                        </label>
-                      </div>
+                      
                       <div className="col-md-4">
                         <label htmlFor="review">Prénom</label>
                         <input
@@ -169,6 +147,30 @@ class Register extends Component {
                           }}
                         >
                           {this.state.error.surNameErr}
+                        </label>
+                      </div>
+
+                      <div className="col-md-4">
+                        <label>Nom</label>
+                        <input
+                          onKeyPress={this.handleKeyPress}
+                          name="name"
+                          type="text"
+                          className="form-control"
+                          id="fname"
+                          placeholder="Votre nom"
+                          onChange={(e) => {
+                            this.setState({ name: e.target.value });
+                          }}
+                        />
+                        <label
+                          style={{
+                            paddingBottom: "20px",
+                            fontSize: 12,
+                            color: "red",
+                          }}
+                        >
+                          {this.state.error.NameErr}
                         </label>
                       </div>
                       

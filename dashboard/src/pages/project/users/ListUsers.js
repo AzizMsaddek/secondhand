@@ -74,7 +74,7 @@ export default class ListUsers extends Component {
 																	<tr>
 																		<td>
 																			{
-																				user.name
+																				user.surName + " " + user.name
 																			}
 																		</td>
 																		<td>
