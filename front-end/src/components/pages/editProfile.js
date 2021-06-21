@@ -290,30 +290,6 @@ class editProfile extends Component {
 									<form className="theme-form">
 										{/* <div className="form-row"> */}
 										<div className="col-md-6">
-											<label>Nom</label>
-											<input
-												onKeyPress={this.handleKeyPress}
-												defaultValue={this.state.name}
-												name="name"
-												type="text"
-												className="form-control"
-												id="fname"
-												placeholder="Votre nom"
-												onChange={(e) => {
-													this.setState({ name: e.target.value });
-												}}
-											/>
-											<label
-												style={{
-													paddingBottom: '20px',
-													fontSize: 12,
-													color: 'red',
-												}}
-											>
-												{this.state.error.NameErr}
-											</label>
-										</div>
-										<div className="col-md-6">
 											<label htmlFor="review">Prénom</label>
 											<input
 											onKeyPress={this.handleKeyPress}
@@ -338,6 +314,31 @@ class editProfile extends Component {
 												{this.state.error.surNameErr}
 											</label>
 										</div>
+										<div className="col-md-6">
+											<label>Nom</label>
+											<input
+												onKeyPress={this.handleKeyPress}
+												defaultValue={this.state.name}
+												name="name"
+												type="text"
+												className="form-control"
+												id="fname"
+												placeholder="Votre nom"
+												onChange={(e) => {
+													this.setState({ name: e.target.value });
+												}}
+											/>
+											<label
+												style={{
+													paddingBottom: '20px',
+													fontSize: 12,
+													color: 'red',
+												}}
+											>
+												{this.state.error.NameErr}
+											</label>
+										</div>
+										
 										{/* </div> */}
 										{/* <div className="form-row"> */}
 										<div className="col-md-6">

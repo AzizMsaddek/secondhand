@@ -68,7 +68,7 @@ class SpecialProducts extends Component {
     } else if (type === "HighToLow") {
       array.sort((a, b) => (a.price < b.price ? 1 : -1));
     } else if (type === "Newest") {
-      array.sort((a, b) => (a.date < b.date ? 1 : -1));
+      array.sort((a, b) => (a.date > b.date ? 1 : -1));
     }
   }
 

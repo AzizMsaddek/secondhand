@@ -1,20 +1,19 @@
-import React, {Component} from 'react';
-import Breadcrumb from "../common/breadcrumb";
+import React, { Component } from 'react';
+import Breadcrumb from '../common/breadcrumb';
 
 import UserController from '../../services/controllers/userControllers';
 
 class ForgetPassword extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			email: '',
+			error: {},
+		};
+		this.UserController = new UserController();
+	}
 
-    constructor (props) {
-        super (props)
-        this.state={
-            email: "",
-            error: {},
-        }
-        this.UserController = new UserController();
-    }
-
-    validate = () => {
+	validate = () => {
 		let isError = false;
 		const errors = {
 			emailErr: '',
@@ -32,7 +31,7 @@ class ForgetPassword extends Component {
 		return isError;
 	};
 
-    handleSubmit = () => {
+	handleSubmit = () => {
 		try {
 			const err = this.validate();
 
@@ -45,11 +44,11 @@ class ForgetPassword extends Component {
 					if (res.data.status === 'Success') {
 						this.props.history.push('/login');
 						console.log('resLogin', res);
-					} else if (res.data.status === "Email error") {
+					} else if (res.data.status === 'Email error') {
 						this.setState({
 							error: {
 								...this.state.error,
-								emailErr: 'adresse mail incorrecte',
+								emailErr: 'Adresse mail incorrecte',
 							},
 						});
 					}
@@ -61,48 +60,63 @@ class ForgetPassword extends Component {
 		}
 	};
 
-    render (){
+	handleKeyPress = (event) => {
+		if (event.key === 'Enter') {
+			this.handleSubmit();
+		}
+	};
 
+	render() {
+		return (
+			<div>
+				<Breadcrumb title={'Mot de passe oublié'} />
 
-        return (
-            <div>
-                <Breadcrumb title={'Mot de passe oublié'}/>
-                
-                
-                {/*Forget Password section*/}
-                <section className="pwd-page section-b-space">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-6 offset-lg-3">
-                                <h2>Mot de passe oublié</h2>
-                                <form className="theme-form">
-                                    <div className="form-row">
-                                        <div className="col-md-12">
-                                            <input type="text" className="form-control" id="email"
-                                                   placeholder="Enter Your Email" required="" onChange={(e) => {
+				{/*Forget Password section*/}
+				<section className="pwd-page section-b-space">
+					<div className="container">
+						<div className="row">
+							<div className="col-lg-6 offset-lg-3">
+								<h2>Mot de passe oublié</h2>
+								<form className="theme-form">
+									<div className="form-row">
+										<div className="col-md-12">
+											<input
+												onKeyPress={this.handleKeyPress}
+												type="text"
+												className="form-control"
+												id="email"
+												placeholder="Enter Your Email"
+												required=""
+												onChange={(e) => {
 													this.setState({ email: e.target.value });
-												}}/>
-                                                   <label
+												}}
+											/>
+											<label
 												style={{
 													paddingBottom: '20px',
 													fontSize: 12,
 													color: 'red',
+													fontWeight: '600',
 												}}
 											>
 												{this.state.error.emailErr}
 											</label>
-                                        </div>
-                                        <a className="btn btn-solid" onClick={() => this.handleSubmit()}>Envoyer</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-        )
-    }
+										</div>
+										<a
+											className="btn btn-solid"
+											onClick={() => this.handleSubmit()}
+										>
+											Envoyer
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		);
+	}
 }
 
-export default ForgetPassword
+export default ForgetPassword;

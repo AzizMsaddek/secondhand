@@ -99,6 +99,11 @@ class Root extends React.Component {
 											component={Deposer}
 										/>
 
+										<ProtectedRoute
+											path={`${process.env.PUBLIC_URL}/checkout`}
+											component={checkOut}
+										/>
+
 										{/*Routes For Single Product*/}
 
 										<Route
@@ -134,10 +139,7 @@ class Root extends React.Component {
 											path={`${process.env.PUBLIC_URL}/compare`}
 											component={Compare}
 										/>
-										<ProtectedRoute
-											path={`${process.env.PUBLIC_URL}/checkout`}
-											component={checkOut}
-										/>
+
 										<PaymentRoute
 											path={`${process.env.PUBLIC_URL}/order-success`}
 											component={orderSuccess}
@@ -164,14 +166,6 @@ class Root extends React.Component {
 											path={`${process.env.PUBLIC_URL}/register`}
 											component={Register}
 										/>
-										<Route
-											path={`${process.env.PUBLIC_URL}/pages/search`}
-											component={Search}
-										/>
-										<Route
-											path={`${process.env.PUBLIC_URL}/pages/collection`}
-											component={Collection}
-										/>
 										<LoggedRoute
 											path={`${process.env.PUBLIC_URL}/forget-password`}
 											component={ForgetPassword}
@@ -180,6 +174,15 @@ class Root extends React.Component {
 											path={`${process.env.PUBLIC_URL}/reset-password/:id`}
 											component={ResetPassword}
 										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/search`}
+											component={Search}
+										/>
+										<Route
+											path={`${process.env.PUBLIC_URL}/pages/collection`}
+											component={Collection}
+										/>
+
 										<Route
 											path={`${process.env.PUBLIC_URL}/pages/contact`}
 											component={Contact}
