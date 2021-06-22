@@ -32,23 +32,27 @@ export default class AddCategory extends Component {
 			title: this.state.title,
 			// description: this.state.description
 		};
-		if (this.state.title !== ''){
-		this.CategoryController.AddCategory(data).then(res => {
-			console.log('response', res);
-			if (res.data.statuts == 500) {
-				this.setState({
-					error: 'Cette catégorie déja existe',
-				});
-			} else {
-				window.location.href = '/category';
-			}
-		});
+		if (this.state.title !== '') {
+			this.CategoryController.AddCategory(data).then(res => {
+				console.log('response', res);
+				if (res.data.statuts == 500) {
+					this.setState({
+						error: 'Cette catégorie déja existe',
+					});
+				} else {
+					window.location.href = '/category';
+				}
+			});
+		} else {
+			this.setState({ error: 'Veuillez remplir ce champ' });
+		}
 	}
-	else {
-		this.setState({error: 'Veuillez remplir ce champ'});
-	}
-	
-	}
+
+	handleKeyPress = event => {
+		if (event.key === 'Enter') {
+			this.handleSubmit(event);
+		}
+	};
 
 	render() {
 		return (
@@ -65,6 +69,7 @@ export default class AddCategory extends Component {
 										</Label>
 										<Col sm={10}>
 											<Input
+												onKeyPress={this.handleKeyPress}
 												type="text"
 												name="name"
 												placeholder="Titre"
@@ -93,6 +98,7 @@ export default class AddCategory extends Component {
 										</Label>
 										<Col sm={10}>
 											<Input
+												onKeyPress={this.handleKeyPress}
 												type="textarea"
 												name="email"
 												placeholder="Description (optionnel)"

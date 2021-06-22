@@ -113,9 +113,9 @@ class Profil extends Component {
                                 />
                               )}
                               <h3>
-                                {this.state.User.name +
+                                {this.state.User.surName +
                                   " " +
-                                  this.state.User.surName}
+                                  this.state.User.name}
 
                                 {this.state.User._id ===
                                 localStorage.getItem("userId") ? (

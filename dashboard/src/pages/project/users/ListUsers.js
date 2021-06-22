@@ -73,9 +73,9 @@ export default class ListUsers extends Component {
 																return (
 																	<tr>
 																		<td>
-																			{
-																				user.surName + " " + user.name
-																			}
+																			{user.surName +
+																				' ' +
+																				user.name}
 																		</td>
 																		<td>
 																			{
@@ -83,31 +83,35 @@ export default class ListUsers extends Component {
 																			}
 																		</td>
 																		<td>
-																		{user.image ? (
-																			<img
-																				alt="user image"
-																				src={`http://localhost:4000/user/userimage/${user.image}`}
-																				height="52px"
-																				width="52px"
-																				style={{
-																					borderRadius:
-																						'80%',
-																						objectFit: 'cover',
-																				}}
-																			/>
-																		) : (
-																			<img
-																				alt="user image"
-																				src={avatar}
-																				height="52px"
-																				width="52px"
-																				style={{
-																					borderRadius:
-																						'80%',
-																						objectFit: 'cover',
-																				}}
-																			/>
-																		)}
+																			{user.image ? (
+																				<img
+																					alt="user image"
+																					src={`http://localhost:4000/user/userimage/${user.image}`}
+																					height="52px"
+																					width="52px"
+																					style={{
+																						borderRadius:
+																							'80%',
+																						objectFit:
+																							'cover',
+																					}}
+																				/>
+																			) : (
+																				<img
+																					alt="user image"
+																					src={
+																						avatar
+																					}
+																					height="52px"
+																					width="52px"
+																					style={{
+																						borderRadius:
+																							'80%',
+																						objectFit:
+																							'cover',
+																					}}
+																				/>
+																			)}
 																		</td>
 																		<td>
 																			<button
@@ -125,8 +129,7 @@ export default class ListUsers extends Component {
 																				style={{
 																					backgroundColor:
 																						'transparent',
-																					border:
-																						'none',
+																					border: 'none',
 																					outline:
 																						'none',
 																				}}

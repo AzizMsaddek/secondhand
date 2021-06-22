@@ -73,6 +73,12 @@ export default class AddSubCategory extends Component {
 		this.getAllCategories();
 	}
 
+	handleKeyPress = event => {
+		if (event.key === 'Enter') {
+			this.handleSubmit(event);
+		}
+	};
+
 	render() {
 		return (
 			<Page>
@@ -124,6 +130,7 @@ export default class AddSubCategory extends Component {
 										</Label>
 										<Col sm={10}>
 											<Input
+												onKeyPress={this.handleKeyPress}
 												type="text"
 												name="name"
 												placeholder="Titre"
@@ -151,6 +158,7 @@ export default class AddSubCategory extends Component {
 										</Label>
 										<Col sm={10}>
 											<Input
+												onKeyPress={this.handleKeyPress}
 												type="textarea"
 												name="email"
 												placeholder="Description (optionnel)"
